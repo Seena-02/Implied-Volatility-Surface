@@ -1,12 +1,8 @@
+#include "BSModelOptions.cpp"
+#include <memory>
 #include <iostream>
-#include <cmath>
 
-class Contract
+int main(int, char **)
 {
-    public:
-    
-    private:
-};
-int main(int, char**){
-    std::cout << "Hello, from implied-volatility-surface!\n";
+    std::shared_ptr<BSModelOptions> bs_model_options_ptr = std::make_shared<BSModelOptions>();
 }
