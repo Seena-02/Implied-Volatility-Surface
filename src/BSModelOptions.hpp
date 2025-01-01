@@ -34,4 +34,5 @@ private:
     std::shared_ptr<Contract> contract_ptr_ = std::make_shared<Contract>();
     const double days_in_calendar_year_ = 365.2425;
 };
+
 #endif BSMODELOPTIONS_HPP
