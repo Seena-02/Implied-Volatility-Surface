@@ -8,6 +8,10 @@
 class MCModelOptions
 {
     public:
+        MCModelOptions();
+
+        ~MCModelOptions();
+
         struct Contract
         {
             double premium_;

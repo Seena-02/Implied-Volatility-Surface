@@ -9,6 +9,10 @@
 class BSModelOptions
 {
 public:
+    BSModelOptions();
+
+    ~BSModelOptions();
+    
     struct Contract
     {
         double premium_;

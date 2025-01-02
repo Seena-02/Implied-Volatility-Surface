@@ -1,5 +1,9 @@
 #include "BSModelOptions.hpp"
 
+BSModelOptions::BSModelOptions() {};
+
+BSModelOptions::~BSModelOptions() {};
+
 double BSModelOptions::GaussianCDF(double &x) const
 {
     constexpr double a1 = 0.254829592;
@@ -47,7 +51,7 @@ BSModelOptions::Contract BSModelOptions::CallBlackScholes(const double &S, const
 
     contract_ptr_->vega_ = S * N_d1 * std::sqrt(t);
 
-    contract_ptr_->rho_ = X * t * std::exp(-r *  t) * N_d2; 
+    contract_ptr_->rho_ = X * t * std::exp(-r * t) * N_d2;
 
     contract_ptr_->implied_volatility_ = sigma - ((contract_ptr_->premium_ - (contract_ptr_->premium_ - 0.01)) / (contract_ptr_->vega_));
 
@@ -59,7 +63,7 @@ BSModelOptions::Contract BSModelOptions::CallBlackScholes(const double &S, const
 BSModelOptions::Contract BSModelOptions::PutBlackScholes(const double &S, const double &X, const double &r, const double &sigma, const double &t)
 {
     const auto [d1, d2, N_d1, N_d2] = BlackScholesHelper(S, X, r, sigma, t);
-    
+
     contract_ptr_->dte_ = t * days_in_calendar_year_;
 
     contract_ptr_->premium_ = X * std::exp(-r * t) * (1 - N_d2) - S * (1 - N_d1);
@@ -72,7 +76,7 @@ BSModelOptions::Contract BSModelOptions::PutBlackScholes(const double &S, const 
 
     contract_ptr_->vega_ = S * N_d1 * std::sqrt(t);
 
-    contract_ptr_->rho_ = -X * t * std::exp(-r *  t) * (1 - N_d2); 
+    contract_ptr_->rho_ = -X * t * std::exp(-r * t) * (1 - N_d2);
 
     contract_ptr_->implied_volatility_ = sigma - (((contract_ptr_->premium_ - 0.01) - contract_ptr_->premium_) / (contract_ptr_->vega_));
 
@@ -80,4 +84,3 @@ BSModelOptions::Contract BSModelOptions::PutBlackScholes(const double &S, const 
 
     return *contract_ptr_;
 }
-
