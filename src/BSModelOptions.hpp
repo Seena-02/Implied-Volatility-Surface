@@ -22,7 +22,7 @@ public:
         double intrinsic_value_;
     };
 
-    double GaussianCDF(double &x);
+    double GaussianCDF(double &x) const;
 
     std::tuple<double, double, double, double> BlackScholesHelper(const double &S, const double &X, const double &r, const double &sigma, const double &t);
 

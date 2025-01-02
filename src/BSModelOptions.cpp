@@ -1,6 +1,6 @@
 #include "BSModelOptions.hpp"
 
-double BSModelOptions::GaussianCDF(double &x)
+double BSModelOptions::GaussianCDF(double &x) const
 {
     constexpr double a1 = 0.254829592;
     constexpr double a2 = -0.284496736;

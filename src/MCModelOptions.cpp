@@ -1,16 +1,20 @@
 #include "MCModelOptions.hpp"
 
+
+double MCModelOptions::GenerateGaussianNoise() const {
+    static std::mt19937 rng(std::random_device{}());
+    static std::normal_distribution<> dist(0.0, 1.0);
+    return dist(rng);
+}
+
+
 MCModelOptions::Contract MCModelOptions::CallMonteCarlo(const double &S, const double &X, const double &r, const double &sigma, const double &t)
 {
-
-    std::mt19937 rng(std::random_device{}());
-    std::normal_distribution<> dist(0.0, 1.0);
-
     double payoff_sum = 0.0;
 
     for(unsigned int i = 0; i < num_simulations_; ++i)
     {
-        double Z = dist(rng);
+        double Z = GenerateGaussianNoise();
         double ST = S * exp((r - 0.5 * sigma * sigma) * t + sigma * sqrt(t) * Z);
         payoff_sum += std::max(ST - X, 0.0);
     }
@@ -22,15 +26,11 @@ MCModelOptions::Contract MCModelOptions::CallMonteCarlo(const double &S, const d
 
 MCModelOptions::Contract MCModelOptions::PutMonteCarlo(const double &S, const double &X, const double &r, const double &sigma, const double &t)
 {
-
-    std::mt19937 rng(std::random_device{}());
-    std::normal_distribution<> dist(0.0, 1.0);
-
     double payoff_sum = 0.0;
 
     for(unsigned int i = 0; i < num_simulations_; ++i)
     {
-        double Z = dist(rng);
+        double Z = GenerateGaussianNoise();
         double ST = S * exp((r - 0.5 * sigma * sigma) * t + sigma * sqrt(t) * Z);
         payoff_sum += std::max(X - ST, 0.0);
     }

@@ -20,6 +20,7 @@ class MCModelOptions
             double implied_volatility_;
             double intrinsic_value_;
         };
+        double GenerateGaussianNoise() const;
 
         Contract CallMonteCarlo(const double &S, const double &X, const double &r, const double &sigma, const double &t);
 
