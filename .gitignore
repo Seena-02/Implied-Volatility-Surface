@@ -1,6 +1,8 @@
 # Ignore build directories
 /build/
 /cmake-build-*/
+/model_options.egg-info/
+/dist/
 
 # Ignore CMake generated files
 CMakeCache.txt

@@ -1,11 +1,9 @@
 #include <pybind11/pybind11.h>
-#include <memory>
 #include "BSModelOptions.hpp"
 
 namespace py = pybind11;
 
-PYBIND11_MODULE(bsmodule, m)
-{
+PYBIND11_MODULE(model_options, m) {  // Make sure this matches the name of your .so file
     py::class_<BSModelOptions::Contract>(m, "Contract")
         .def(py::init<>())
         .def_readwrite("premium_", &BSModelOptions::Contract::premium_)
