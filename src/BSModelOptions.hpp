@@ -12,7 +12,7 @@ public:
     BSModelOptions();
 
     ~BSModelOptions();
-    
+
     struct Contract
     {
         double premium_;
@@ -39,4 +39,4 @@ private:
     const double days_in_calendar_year_ = 365.2425;
 };
 
-#endif BSMODELOPTIONS_HPP
+#endif // BSMODELOPTIONS_HPP
