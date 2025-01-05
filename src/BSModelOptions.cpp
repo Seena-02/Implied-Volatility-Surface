@@ -55,6 +55,8 @@ BSModelOptions::Contract BSModelOptions::CallBlackScholes(const double &S, const
 
     contract_ptr_->implied_volatility_ = sigma - ((contract_ptr_->premium_ - (contract_ptr_->premium_ - 0.01)) / (contract_ptr_->vega_));
 
+    contract_ptr_->moneyness_ = S / X;
+
     contract_ptr_->intrinsic_value_ = std::max(S - X, 0.0);
 
     return *contract_ptr_;
@@ -79,6 +81,8 @@ BSModelOptions::Contract BSModelOptions::PutBlackScholes(const double &S, const 
     contract_ptr_->rho_ = -X * t * std::exp(-r * t) * (1 - N_d2);
 
     contract_ptr_->implied_volatility_ = sigma - (((contract_ptr_->premium_ - 0.01) - contract_ptr_->premium_) / (contract_ptr_->vega_));
+
+    contract_ptr_->moneyness_ = S / X;
 
     contract_ptr_->intrinsic_value_ = std::max(X - S, 0.0);
 

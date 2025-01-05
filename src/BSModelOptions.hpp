@@ -23,6 +23,7 @@ public:
         double vega_;
         double rho_;
         double implied_volatility_;
+        double moneyness_;
         double intrinsic_value_;
     };
 
