@@ -1,10 +1,11 @@
 ---
 # Implied-Volatility-Surface
-
-The **Implied Volatility Surface** project is a Python-based application for options modeling. While the backend calculations are relatively simple, they are implemented in C++ for demonstration purposes, showcasing scenarios where faster computation might be necessary. The module uses Pybind11 to integrate the C++ backend into Python.
 ---
 
+The **Implied Volatility Surface** project is a Python-based application for options modeling. While the backend calculations are relatively simple, they are implemented in C++ for demonstration purposes, showcasing scenarios where faster computation might be necessary. The module uses Pybind11 to integrate the C++ backend into Python.
+
 ## Setup Guide
+---
 
 ### 1. Clone the Repository
 
@@ -38,7 +39,7 @@ python3 setup.py install
 pip install .
 ```
 
-#### Method 3: Testing locally, allows changes to your code without reinstalling the package.
+#### Method 3: Test locally without reinstalling the package after code changes.
 
 ```bash
 pip install --editable .
